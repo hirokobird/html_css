@@ -1,0 +1,55 @@
+/* =========== ここから下は変更しない =========== */
+
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+}
+
+nav ul {
+  width: 300px;
+  background-color: lightgreen;
+}
+
+h2,
+h3 {
+  margin: 30px 0 100px;
+  padding: 0 3%;
+}
+
+.container {
+  margin: 80px auto 0;
+  width: 400px;
+  height: 400px;
+  background-color: lightblue;
+}
+
+/* =========== ここから上は変更しない =========== */
+
+/* =========== 問1 ここから下に記述 =========== */
+ul {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20%;
+}
+/* 以下のように、nav要素にmargin-leftを付けないように注意 */
+/* nav {
+  margin-left: 20%;
+} */
+
+/* =========== 問2 ここから下に記述 =========== */
+.container {
+  position: relative;
+}
+.container img {
+  position: absolute;
+  left: 10%;
+  top: 20%;
+}
