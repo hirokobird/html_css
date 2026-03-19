@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+header img {
+    width: 100%;
+}
+
+header .CatchCopy {
+    position:relative ;
+}
+
+header h1 {
+    color: #faeaea;
+    font-size: 30px;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F5F5F5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+nav ul li {
+    list-style-type: none;
+    flex-basis: 33%;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.Message {
+    margin: 60px 50px 100px;
+    text-align: center;
+}
+
+article h2 {
+    font-size: 21px;
+    margin-bottom: 25px;
+}
+.Message article p {
+    font-size: 15px;
+    margin-bottom: 1.5em;
+    line-height: 1.8; /* 行間を広げる */ 
+}
+/* 最後の一行の余白は0に */
+.Message article p:last-child {
+    margin-bottom: 0;
+}
+
+h3 {
+    color: #5CD65C;
+    font-size: 28px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: .05em;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+div.Contener {
+    display: flex;
+    justify-content: space-around;
+}
+article img {
+    display: block;      /* 重要！画像の下に謎の隙間ができるのを防ぐ */
+    margin-bottom: 15px; /* ここで余白を調整　 */
+    max-width: 100%; /* 親の幅（45%分）を超えないようにする */
+    height: auto;    /* 縦横比を保つ */
+}
+
+/* モダンな方法：figure に display: grid と gap
+これだけで、中の img と figcaption の間に隙間ができる
+article figure {
+    display: grid;
+    gap: 15px; 
+} */
+
+.Contener article {
+    flex-basis: 43%;
+}
+
+figcaption h4 {
+    color: #5CD65C;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+figcaption p {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 1.5em;
+    line-height: 1.5; /* 行間を広げる */ 
+}
+section.Menu {
+    margin-bottom: 500px;
+}
+section.Menu::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../data/images/bg.jpg) no-repeat center/cover;
+    z-index: -1;
+}
+
+footer {
+    background-color: #D9D9D9;
+    padding: 15px 100px;
+    text-align: center;
+}
+
+address {
+    display: flex;
+    justify-content: space-between;
+
+}
