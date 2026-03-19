@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+nav ul {
+    margin-left: 60%;
+}  
+.catch_copy {
+    position: relative;
+}
+.catch_copy img {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    filter: drop-shadow(1px 1px 3px #272626);
+}
+.lead p {
+    text-align: center;
+}
+span {
+    background-color: #f4f154;
+}
+.flex_container {
+    display: flex;
+    justify-content: space-between;
+}
+main {
+    width: 70%;
+}
+aside {
+    width: 20%;
+}
+.SNS img {
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.SNS img:hover {
+    filter: brightness(150%);
+}
