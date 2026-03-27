@@ -79,6 +79,10 @@ div.Contener {
     display: flex;
     justify-content: space-around;
 }
+.Contener article {
+    flex-basis: 43%;
+    text-align: center;
+}
 article img {
     display: block;      /* 重要！画像の下に謎の隙間ができるのを防ぐ */
     margin-bottom: 15px; /* ここで余白を調整　 */
@@ -92,11 +96,6 @@ article figure {
     display: grid;
     gap: 15px; 
 } */
-
-.Contener article {
-    flex-basis: 43%;
-}
-
 figcaption h4 {
     color: #57F169;
     font-size: 18px;

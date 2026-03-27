@@ -16,11 +16,9 @@
                     <li><a href="#">contact</a></li>
                 </ul>
             </nav>
-            <div class="CatchCopy">
-            <img src="../../data/images/pc_header.jpg" alt="frontiercamp_main">          
+            <!-- <img src="../../data/images/pc_header.jpg" alt="frontiercamp_main">           -->
                 <h1>自然とともに息づく<br>
                 心安らぐ至福のキャンプ場 </h1>
-            </div>
         </header>
         <main>
             <section class="Message">
@@ -34,7 +32,7 @@
                 </article>
             </section>
 
-            <section class="Menu">
+            <section class="Activity">
                 <h3>activities</h3>
                 <div class="Contener">
                     <article class="menu01">              
@@ -65,25 +63,40 @@
                 <form>
                     <h3>contact</h3>
                 
-                    代表者氏名
-                    <input type="text" name="user_name">
-                    電話番号
-                    <input type="tel" name="user_tel">
-                    メールアドレス
-                    <input type="email" name="user_mail">
-                    ご予約人数
-                    <input type="text" name="user_count">
-                    ご質問等
-                    <textarea name="question"></textarea>
-                
-                    <input type="submit" value="送信">                    
+                    <p>
+                    <label>
+                        代表者氏名<br>
+                        <input type="text" name="user_name" required>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        電話番号<br>
+                        <input type="tel" name="user_tel" required>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        メールアドレス<br>
+                        <input type="email" name="user_mail">
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        ご予約人数<br>
+                        <input type="number" name="user_count" min="1" required>
+                    </label>
+                    </p>
+                    <p>ご質問等<br>
+                    <textarea name="question"></textarea></p>
+                    <p class="submit"><input type="submit" value="送信">  </p>                  
                 </form>
             </section>
         </main>
         <footer>
             フロンティアキャンプ
             <address>
-                <p>電話番号：080-xxxx-xxxx</p>
+                <p>電話番号：<a href="tel:080-xxxx-xxxx">080-xxxx-xxxx</a></p>
                 <p>住所：福岡県福岡市博多区住吉</p>
             </address>
         </footer>
