@@ -96,6 +96,31 @@ article figure {
     display: grid;
     gap: 15px; 
 } */
+
+/* h4をarticleのfigure要素の上に設置した場合、
+以下の方法でorderにて配置順を変える方法もあり。
+ただし、複雑すぎる。display: contents は「親の枠組みを無視して子要素を並べる」高度な技だが
+今回のようなシンプルな並び替えにはオーバースペック
+
+アクセシビリティの問題: 画面読み上げソフトは、CSSの order を無視して、
+HTMLに書いてある順番（h4 → 画像 → 説明文）で読み上げ、見た目の順番と読み上げ順がずれるためわかりにくい。*/
+/* article figure { 
+    display: contents;　親要素をないことにして中身のコンテンツを表示する→flexで並列に横並びにできる
+}
+article {
+    display: flex;
+    flex-direction: column;
+}
+article img {
+    order: 1;
+}
+article h4 {
+    order: 2;
+}
+article figcaption {
+    order: 3    ;
+} */
+
 figcaption h4 {
     color: #57F169;
     font-size: 18px;
@@ -110,16 +135,17 @@ figcaption p {
     line-height: 1.5; /* 行間を広げる */ 
 }
 /* section.Activity {
-    margin-bottom: 500px;
+    margin-bottom: 300px;
 }
 section.Activity::after {
     content: "";
     position: fixed;
     left: 0;
-    right: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: url(../../data/images/bg.jpg) no-repeat center/cover;
+    background-position: bottom;
     z-index: -1;
 } */
 .Parallax-Bg {
