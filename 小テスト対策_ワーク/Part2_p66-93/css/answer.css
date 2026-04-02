@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/* =========================
+   body (手順1)
+========================= */
+body {
+  background-color: #f4f6ff;
+  font-family: Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+/* =========================
+   h1 (手順2)
+========================= */
+h1 {
+  font-size: 22px;
+  border: 2px dashed #6666cc;
+  border-radius: 8px;
+  width: 360px;
+  margin: 30px auto;
+  padding: 12px 0;
+}
+
+/* =========================
+   ul (手順3)
+========================= */
+ul {
+  width: 360px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+/* =========================
+   li (手順4)
+========================= */
+li {
+  margin-bottom: 12px;
+  list-style: none;
+}
+
+/* =========================
+   a (手順5)
+========================= */
+a {
+  background-color: #4a90e2;
+  display: block;
+  padding: 12px 0;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* =========================
+   img (手順6)
+========================= */
+img {
+  border-radius: 12px;
+  display: block;
+  margin: 10px auto 30px;
+}
+
+/* =========================
+   p, ul (手順7)
+========================= */
+p, ul {
+  margin-bottom: 30px;
+  text-align: left;
+}

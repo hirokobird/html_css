@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body {
+    background-color: #f4f6ff;
+    font-family: Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif ;
+}
+h1 {
+    font-size: 22px;
+    border: 2px dashed #6666cc;
+    border-radius: 8px;
+    width: 360px;
+    margin: 30px auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /* padding: 12px 0; の形で一元化できる */
+}
+ul {
+    width: 360px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+}
+li {
+    margin-bottom: 12px;
+    list-style-type: none;
+}
+a {
+    background-color: #4a90e2;
+    display: block;
+    padding: 12px 0;
+    border-radius: 10px;
+    color: #FFF;
+    font-weight: bold;
+}
+img {
+    border-radius: 12px;
+    display: block;
+    margin: 10px auto 30px;
+}
+p, ul {
+    margin-bottom: 30px;
+    text-align: left;
+}

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>CSS 実技テスト（問題ファイルHTML版）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --nav-h: 56px;
+      --page-max: 1080px;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --border-color: #d2d2d7;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --danger: #ff3b30;
+      --radius-m: 12px;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: #fff;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      font-weight: 600;
+      z-index: 1000;
+    }
+
+    .subnav-container {
+      position: sticky;
+      top: var(--nav-h);
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 8px 12px;
+      z-index: 900;
+    }
+
+    .subnav {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .subnav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      padding: 6px 2px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: 8px;
+    }
+
+    .subnav a.active {
+      background: #1d1d1f;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .wrapper {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 32px 20px 100px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+      scroll-margin-top: 140px;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .pick {
+      color: var(--danger);
+      font-weight: 600;
+      background: rgba(255, 59, 48, 0.08);
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    CSS 実技テスト（HTML問題ファイル）
+  </div>
+
+  <div class="subnav-container">
+    <nav class="subnav" id="subnav">
+      <a class="active" href="#step1">手順1</a>
+      <a href="#step2">手順2</a>
+      <a href="#step3">手順3</a>
+      <a href="#step4">手順4</a>
+      <a href="#step5">手順5</a>
+      <a href="#step6">手順6</a>
+      <a href="#step7">手順7</a>
+      <a href="#step8">手順8</a>
+      <a href="#step9">手順9</a>
+    </nav>
+  </div>
+
+  <div class="wrapper">
+    <section class="section" id="overview">
+      <h2>問題概要</h2>
+
+      <p>
+        この課題では、あらかじめ用意された <span class="pick">index.html(plactice.html)</span> に
+        マークアップされている HTML 要素に対して、
+        <span class="pick">CSS を用いて装飾</span>を行います。<br>完成イメージを参考にcssを適用してください。
+      </p>
+
+      <p>
+        HTML ファイルは <span class="pick">編集禁止</span> です。<br>
+        新規に作成する <span class="pick">style.css</span> ファイルに、
+        指示されたスタイルを正しく記述してください。
+      </p>
+
+      <p>
+        以降の手順では、<br>
+        「どの HTML 要素に」「どのような CSS を指定するか」を
+        手順ごとに示しています。
+      </p>
+
+      <p class="code-note">
+        ※ 指定されていないプロパティや数値を追加しないでください。
+      </p>
+    </section>
+
+    <section class="section" id="step1">
+      <h2>手順1：body</h2>
+      <ul>
+        <li>背景色を <span class="pick">#f4f6ff</span></li>
+        <li>
+          フォントを<br>
+          <span class="pick">Arial, Hiragino Kaku Gothic ProN, Meiryo, sans-serif</span>
+          の順で指定
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="step2">
+      <h2>手順2：h1</h2>
+      <ul>
+        <li>文字サイズ：<span class="pick">22px</span></li>
+        <li>枠線：<span class="pick">太さは2px、 種類は破線、枠線の色は#6666cc</span></li>
+        <li>角丸：<span class="pick">8px</span></li>
+        <li>幅：<span class="pick">360px</span></li>
+        <li>余白と位置合わせ：<span class="pick">上下に30pxの余白を設けて中央寄せ</span></li>
+        <li>内側余白：上下 <span class="pick">12px</span></li>
+      </ul>
+    </section>
+
+    <section class="section" id="step3">
+      <h2>手順3：ul</h2>
+      <ul>
+        <li>幅：<span class="pick">360px</span></li>
+        <li>余白と位置合わせ：<span class="pick">上下の余白は0、左右は中央寄せ</span></li>
+        <li>内側余白：<span class="pick">0</span></li>
+        <li>テキスト配置：<span class="pick">左寄せ</span></li>
+      </ul>
+    </section>
+
+    <section class="section" id="step4">
+      <h2>手順4：li</h2>
+      <ul>
+        <li>下方向の余白：<span class="pick">12px</span></li>
+        <li>リストマーカーを非表示</li>
+      </ul>
+    </section>
+
+    <section class="section" id="step5">
+      <h2>手順5：a</h2>
+      <ul>
+        <li>背景色：<span class="pick">#4a90e2</span></li>
+        <li><span class="pick">display: block</span></li>
+        <li>内側余白：上下 <span class="pick">12px、左右は0</span></li>
+        <li>角丸：<span class="pick">10px</span></li>
+        <li>文字色：<span class="pick">#ffffff</span>、太字</li>
+      </ul>
+    </section>
+
+    <section class="section" id="step6">
+      <h2>手順6：img</h2>
+      <ul>
+        <li>角丸：<span class="pick">12px</span></li>
+        <li>display: <span class="pick">block</span></li>
+        <li>余白と位置合わせ：<span class="pick">上は10px</span>／<span class="pick">下は30px</span>左右は中央寄せ</li>
+      </ul>
+    </section>
+
+    <section class="section" id="step7">
+      <h2>手順7：p, ul（複数指定）</h2>
+      <ul>
+        <li>下方向の余白：<span class="pick">30px</span></li>
+        <li>テキスト配置：<span class="pick">左寄せ</span></li>
+      </ul>
+    </section>
+
+    <section class="section" id="step8">
+      <h2>手順8：全体確認</h2>
+      <p>すべての指定が正しく反映されているか確認してください。</p>
+    </section>
+
+    <section class="section" id="step9">
+      <h2>手順9：提出前チェック</h2>
+      <ul>
+        <li>HTMLを編集していない</li>
+        <li>px を省略していない</li>
+        <li>セレクタの指定ミスがない</li>
+      </ul>
+    </section>
+
+  </div>
+  <script>
+    function smoothScrollTo(hash) {
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      const navHeight = document.querySelector('.navbar').offsetHeight;
+      const subnavHeight = document.querySelector('.subnav-container').offsetHeight;
+      const offset = navHeight + subnavHeight + 20;
+
+      const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.subnav a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          smoothScrollTo(href);
+          history.replaceState(null, '', href);
+        }
+      });
+    });
+  </script>
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.subnav a');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = '#' + entry.target.id;
+
+            navLinks.forEach(link => {
+              link.classList.toggle(
+                'active',
+                link.getAttribute('href') === id
+              );
+            });
+          }
+        });
+      },
+      {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>HTMLマークアップ演習（問題ファイルHTML版）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* --------- Base Variables --------- */
+    :root {
+      --nav-h: 56px;
+      /* 少し高さを詰めました */
+      --page-max: 1080px;
+      --content-max: 100%;
+      /* 横並び時に余白で潰れないよう調整 */
+
+      --accent: #007aff;
+      --danger: #ff3b30;
+
+      --bg-body: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      /* 透過度を少し下げて視認性アップ */
+
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+
+      --border-color: #d2d2d7;
+      --radius-m: 12px;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-stack);
+      color: var(--text-primary);
+      line-height: 1.6;
+      background: var(--bg-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --------- Top Navbar --------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* 中央寄せ */
+      padding: 0 16px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* --------- Subnav (Grid Layout for Narrow Width) --------- */
+    .subnav-container {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 900;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 8px 12px;
+      /* 余白を調整 */
+    }
+
+    .subnav {
+      max-width: var(--page-max);
+      margin: 0 auto;
+
+      /* ★ここが変更点: グリッドレイアウト */
+      display: grid;
+      /* 常に5列で表示 (10個あるので2行になります) */
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      /* ボタン間の隙間 */
+    }
+
+    .subnav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text-secondary);
+
+      /* タイルデザイン */
+      background: rgba(0, 0, 0, 0.03);
+      padding: 6px 2px;
+      /* 上下6px, 左右は詰め気味に */
+      border-radius: 8px;
+      font-size: 11px;
+      /* 幅が狭くても文字が入るよう調整 */
+      font-weight: 500;
+      transition: all 0.2s ease;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* ホバー時 */
+    .subnav a:hover {
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--text-primary);
+    }
+
+    /* アクティブ時 (Apple Style Dark Mode Button) */
+    .subnav a.active {
+      color: #fff;
+      background: #1d1d1f;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --------- Layout --------- */
+    .wrapper {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      /* サイドバー(TOC)は狭い画面では邪魔になるので、コンテンツのみにする */
+      padding: 32px 20px 100px;
+    }
+
+    /* --------- Content --------- */
+    .section {
+      margin-bottom: 60px;
+      /* ナビゲーションの高さが変わるのでスクロール位置調整を計算式に変更 */
+      scroll-margin-top: 140px;
+
+      /* フェードインアニメーション */
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section h2 {
+      font-size: 24px;
+      /* 少しサイズダウンして狭い画面に対応 */
+      font-weight: 700;
+      margin: 0 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 28px 0 10px;
+      color: var(--text-primary);
+    }
+
+    .section p {
+      margin-bottom: 16px;
+      font-size: 15px;
+      /* 可読性のため標準サイズ */
+    }
+
+    /* --------- Code Blocks (Compact for Split View) --------- */
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 16px;
+      border-radius: var(--radius-m);
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      /* コードサイズを少し小さく */
+      line-height: 1.45;
+      overflow-x: auto;
+      /* 横スクロール必須 */
+      margin: 16px 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* --------- Utilities --------- */
+    .pick {
+      font-weight: 600;
+      color: var(--danger);
+      background: rgba(255, 59, 48, 0.08);
+      padding: 1px 4px;
+      border-radius: 4px;
+      word-break: break-all;
+      /* 長い単語でのレイアウト崩れ防止 */
+    }
+
+    /* --------- Apple Style Table --------- */
+    .table-wrapper {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      /* 角丸からはみ出さないように */
+      margin: 16px 0 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      /* 本文より少し小さくして情報を整理 */
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      /* 薄い区切り線 */
+    }
+
+    /* 左側の見出し列 */
+    th {
+      background-color: var(--bg-secondary);
+      /* 薄いグレー背景 */
+      font-weight: 600;
+      color: var(--text-primary);
+      width: 30%;
+      /* 幅を固定して見やすく */
+      white-space: nowrap;
+      /* 折り返し禁止 */
+      vertical-align: middle;
+    }
+
+    /* 右側の内容列 */
+    td {
+      color: var(--text-primary);
+      vertical-align: middle;
+    }
+
+    /* 最後の行の線は消す */
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* スマホなどで幅が狭すぎる場合の調整 */
+    @media (max-width: 600px) {
+      th {
+        width: auto;
+        white-space: normal;
+      }
+    }
+
+    .code-note {
+      color: var(--text-secondary);
+      font-size: 12px;
+      margin-top: -8px;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* 右側のTOCは、画面分割時には邪魔になることが多いので非表示にします */
+    .toc {
+      display: none;
+    }
+
+    /* 画面幅がそこそこある場合のみTOCを表示したい場合はコメントアウトを外してください */
+    /*
+    @media (min-width: 900px) {
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        gap: 40px;
+      }
+      .toc { display: block; ... }
+    }
+    */
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    HTMLマークアップ演習（問題ファイルHTML版）
+  </div>
+
+  <div class="subnav-container">
+    <nav class="subnav" id="subnav">
+      <a class="tablink active" href="#step1">手順1</a>
+      <a class="tablink" href="#step2">手順2</a>
+      <a class="tablink" href="#step3">手順3</a>
+      <a class="tablink" href="#step4">手順4</a>
+      <a class="tablink" href="#step5">手順5</a>
+      <a class="tablink" href="#step6">手順6</a>
+      <a class="tablink" href="#step7">手順7</a>
+      <a class="tablink" href="#step8">手順8</a>
+      <a class="tablink" href="#step9">手順9</a>
+      <a class="tablink" href="#step10">手順10</a>
+    </nav>
+  </div>
+
+  <div class="wrapper">
+    <main class="content-area" id="main">
+
+      <section class="section" id="step1">
+        <h2>手順1：ゴールと提出物</h2>
+        <p>
+          このファイルは<strong>問題文</strong>です。別ファイルとして <span class="pick">practice.html</span> がありますので、そこに解答を書いてください。<br>
+          それ以外の <span class="pick">フォルダやファイル</span> は編集しないでください。マークアップ後、完成イメージと同じ見た目になればOKです。
+        </p>
+        <ul>
+          <li>CSSの変更は禁止（HTMLのみ編集）</li>
+          <li>クラスの追加は禁止（タグ選びで勝負）</li>
+          <li>迷ったら「これは何の役割？」を考える</li>
+        </ul>
+        <p class="code-note">※ この問題は「タグ名当てクイズ」ではなく「意味のマークアップ練習」です。</p>
+      </section>
+
+      <section class="section" id="step2">
+        <h2>手順2：見出し（階層）を付ける</h2>
+        <p>
+          次の文章は、ページ全体の<strong>タイトル</strong>です。ページを代表する最も重要な見出しとしてマークアップしてください。<br>
+          その下の「学習内容」「学習の流れ」などは、ページ内の<strong>大きな区切り</strong>です。<br>
+          「① 同じ階層」などは、直前の区切りの<strong>補足的な小見出し</strong>です。
+        </p>
+        <pre>HTMLマークアップ練習ページ
+
+学習内容
+学習の流れ
+用語の説明
+参考リンク
+画像パス指定の練習
+① 同じ階層
+② imgフォルダ内
+③ ひとつ上の階層
+重要なポイント
+学習スケジュール
+お問い合わせ</pre>
+      </section>
+
+      <section class="section" id="step3">
+        <h2>手順3：段落と改行</h2>
+        <p>
+          次の文章は、見出しを説明するための<strong>文章</strong>です。<br>
+          途中で改行したい箇所が1か所あります（行を分けたいだけで、新しい段落ではありません）。
+        </p>
+        <pre>このページは、HTMLの基本タグを正しく使えるようになるための練習用ページです。
+文章の意味を考えながら、適切なタグでマークアップしてください。</pre>
+      </section>
+
+      <section class="section" id="step4">
+        <h2>手順4：箇条書き（順番は関係なし）</h2>
+        <p>
+          次の項目は<strong>順番に意味はありません</strong>。どれから読んでも内容は変わらないものです。<br>
+          「買い物リスト」のイメージでマークアップしてください。
+        </p>
+        <pre>HTMLの基本構造
+よく使う文章タグ
+リスト・表・リンク・画像</pre>
+      </section>
+
+      <section class="section" id="step5">
+        <h2>手順5：手順（順番が重要）</h2>
+        <p>
+          次の項目は<strong>上から順に行う必要があります</strong>。順番を入れ替えると意味が変わります。<br>
+          「レシピ」のイメージでマークアップしてください。
+        </p>
+        <pre>テキストを読む
+どのタグを使うか考える
+HTMLとして書く
+ブラウザで確認する</pre>
+      </section>
+
+      <section class="section" id="step6">
+        <h2>手順6：用語と説明（用語集）</h2>
+        <p>
+          次の部分は、<strong>用語</strong>とその<strong>説明</strong>の組み合わせです。<br>
+          1つの言葉に対して、説明文が続きます（箇条書きではありません）。
+        </p>
+        <pre>HTML
+Webページを作るための言語
+
+マークアップ
+文章に意味を与えること</pre>
+      </section>
+
+      <section class="section" id="step7">
+        <h2>手順7：リンク</h2>
+        <p>
+          次の文字列は外部サイトへの<strong>参照</strong>です。リンクとしてマークアップしてください。<br>
+          表示文字は「MDN Web Docs」、URLは下記です。
+        </p>
+        <pre>表示文字：MDN Web Docs
+URL：https://developer.mozilla.org/ja/</pre>
+      </section>
+
+      <section class="section" id="step8">
+        <h2>手順8：画像（パス3パターン）</h2>
+        <p>
+          次の条件で画像を表示してください（同じページに3枚）。<br>
+          正しく指定できないと画像は表示されません。
+        </p>
+        <ul>
+          <li>1枚目：このHTMLファイルと<strong>同じ階層</strong>の <span class="pick">sample.png</span></li>
+          <li>2枚目：<span class="pick">img</span> フォルダ内の <span class="pick">sample2.png</span></li>
+          <li>3枚目：<strong>ひとつ上の階層</strong>の <span class="pick">sample3.png</span></li>
+        </ul>
+        <p class="code-note">※ alt 属性も指定してください（内容が伝わる日本語）。</p>
+      </section>
+
+      <section class="section" id="step9">
+        <h2>手順9：強調・表・連絡先</h2>
+
+        <h3>① 強調（意味として重要）</h3>
+        <p>
+          次の文の中で、読み手に特に意識してほしい重要な部分があります。<br>
+          見た目目的ではなく、<strong>意味として強調</strong>してください。
+        </p>
+        <pre>意味を考えてタグを選ぶことが大切です。</pre>
+
+        <h3>② 表（行と列で整理）</h3>
+        <p>
+          次の情報は、<strong>行と列</strong>で整理すると分かりやすい内容です。表としてマークアップしてください。
+        </p>
+        <pre>日程 / 内容
+1日目 / HTMLの基礎
+2日目 / リストとリンク
+3日目 / 表と画像</pre>
+
+        <h3>③ 連絡先（制作者・組織の情報）</h3>
+        <p>
+          次の情報は、ページの制作者・組織に関する<strong>連絡先・所在地</strong>です。<br>
+          一般的な文章ではなく、連絡先としてまとめてマークアップしてください。
+        </p>
+        <pre>フロンティアアカデミー
+福岡市博多区住吉５丁目１８−７ 第２山城ビル 4F</pre>
+      </section>
+
+      <section class="section" id="step10">
+        <h2>手順10：チェック方法（自己採点）</h2>
+        <ul>
+          <li>見出しの階層が自然か（ページタイトル → 大区切り → 小見出し）</li>
+          <li>箇条書きと手順書きが分かれているか（順番が重要かで判断）</li>
+          <li>用語と説明が「用語集」になっているか</li>
+          <li>リンクがクリックできるか（表示文字とURLが一致）</li>
+          <li>画像が3枚とも表示されるか（パス違い）</li>
+          <li>重要文が強調されているか</li>
+          <li>スケジュールが表になっているか</li>
+          <li>連絡先が連絡先としてまとまっているか</li>
+        </ul>
+        <p class="code-note">※ CSSが当たって「色付きブロック」になるかどうかが、ほぼそのまま正誤判定になります。</p>
+      </section>
+
+      </main>
+  </div>
+
+  <script>
+    // Smooth scroll considering dynamic header height
+    function smoothScrollTo(hash) {
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      // ヘッダーとナビゲーションの高さを動的に取得してオフセット計算
+      const navHeight = document.querySelector('.navbar').offsetHeight;
+      const subnavHeight = document.querySelector('.subnav-container').offsetHeight;
+      const offset = navHeight + subnavHeight + 20;
+
+      const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.subnav a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          smoothScrollTo(href);
+          history.replaceState(null, '', href);
+        }
+      });
+    });
+
+    // Intersection Observer
+    const sections = document.querySelectorAll('.section');
+    const subnavLinks = document.querySelectorAll('.subnav a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = '#' + entry.target.id;
+          subnavLinks.forEach(l => {
+            l.classList.toggle('active', l.getAttribute('href') === id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+
+</body>
+
+</html>
